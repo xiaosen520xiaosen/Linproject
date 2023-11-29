@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .mask{
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0,0,0,.5);
+        z-index: 100000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .content{
+        width: 40%;
+        height: 40%;
+        background-color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="showModal">显示弹窗</button>
+      <div class="mask" v-show="modalStatus" @click.self="hideModal">
+
+        <div class="content">
+          <p>内容1</p>
+          <p>内容2</p>
+          <p>内容3</p>
+        </div>
+      </div>
+    </div>
+    <script src="./vue.global.js"></script>
+    <script>
+      
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+            modalStatus: false
+          };
+        },
+        methods: {
+          showModal(){
+            this.modalStatus = true;
+          },
+          hideModal(){
+            this.modalStatus = false;
+          }
+        }
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  
+  </head>
+  <body>
+    <div id="app">
+        <input type="number" v-model="wd">
+        <img v-bind:src="url" alt="" v-bind:width="wd" v-bind:aa="a">
+        <!-- 简写 -->
+        <img :src="url" alt="" :width="wd" :aa="a">
+    </div>
+    <script src="./vue.global.js"></script>
+    <script>
+  
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+             url: 'https://img0.baidu.com/it/u=2389371048,1699171758&fm=253&fmt=auto&app=138&f=JPEG?w=889&h=500',
+             wd: 100,
+             a: '这是自定义属性'
+          };
+        }
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

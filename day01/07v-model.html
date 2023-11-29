@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  
+  </head>
+  <body>
+    <div id="app">
+        <!-- 输入框直接 v-model绑定 字符串数据即可 -->
+      <input type="text" v-model="msg">
+      {{msg}}
+      <hr>
+      <!-- v-model绑定单选 -->
+      <label for="male">男</label>
+      <input type="radio"  id="male" value="男" v-model="gender">
+      <label for="female">女</label>
+      <input type="radio"  id="female" value="女" v-model="gender">
+      <br>
+      {{gender}}
+      <hr>
+      <!-- v-model绑定复选框 -->
+      <label for="hobby1">篮球</label>
+      <input type="checkbox"  id="hobby1" value="篮球" v-model="hobbies">
+      <label for="hobby2">足球</label>
+      <input type="checkbox"  id="hobby2" value="足球" v-model="hobbies">
+      <label for="hobby3">乒乓球</label>
+      <input type="checkbox"  id="hobby3" value="乒乓球" v-model="hobbies">
+      <br>
+      {{ hobbies }}
+      <hr>
+      <!-- 单个复选框 双向绑定 checked 属性 -->
+      <input type="checkbox" v-model="isBeauty">
+      {{ isBeauty?'大美女': '好姑娘' }}
+      <hr>
+      <!-- <select v-model="city">
+        <option value="合肥">合肥</option>
+        <option value="六安">六安</option>
+        <option value="芜湖">芜湖</option>
+        <option value="蚌埠">蚌埠</option>
+      </select>
+      <br>
+      {{city}} -->
+
+      <select v-model="cites" multiple>
+        <option value="合肥">合肥</option>
+        <option value="六安">六安</option>
+        <option value="芜湖">芜湖</option>
+        <option value="蚌埠">蚌埠</option>
+      </select>
+      <br>
+      {{cites}}
+    </div>
+    <script src="./vue.global.js"></script>
+    <script>
+  
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+             msg: '初始值',
+             gender: "女",
+             hobbies: ['足球'],
+             isBeauty: true,
+             city: '芜湖',
+
+             cites: ['芜湖', '合肥']
+          };
+        }
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

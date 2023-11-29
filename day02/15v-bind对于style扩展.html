@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+        <input type="number" v-model="wd">
+        <div :style="{
+          width: wd+'px',
+          height: 100+400+'px',
+          backgroundColor: 'red'
+        }"></div>
+    </div>
+    <script src="./vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+            wd:  100
+          };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

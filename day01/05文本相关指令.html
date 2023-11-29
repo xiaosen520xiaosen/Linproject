@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 绑定的值 作为 标签 文本内容输出 -->
+    <div class="text" v-text="msg"></div>
+    <div class="text">
+      {{msg}}
+    </div>
+
+    {{ content }}
+    
+    <div v-text="content"></div>
+
+    <div v-html="content"></div>
+  </div>
+  
+  <script src="./vue.global.js"></script>
+  <script>
+    const { createApp } = Vue;
+  
+    const app = createApp({
+      data(){
+        return {
+          msg: 'hello world',
+          content: `
+            <h1 style="color:red">这是详情内容</h1>
+          `
+        }
+      },
+      methods: {
+        msg2() {
+          return 'hello vue3'
+        }
+      },
+    })
+
+    app.mount("#app")
+  </script>
+</body>
+</html>

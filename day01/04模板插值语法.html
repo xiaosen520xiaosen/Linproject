@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 
+      文本渲染
+      模板 插值： 将实例数据 作为字符串 在 视图上输出 （输出字符串）
+    -->
+    <button @click="msg='值改变了'">改变</button>
+    {{ msg }}
+    {{ msg2() }}
+    {{ isBeauty? '美丽' : '丑陋' }}
+
+    {{ 1+2+3*5 }}
+
+    <hr>
+    {{parseInt("1.2345")}}
+    <br>
+    <!-- {{alert(1)}} -->
+  </div>
+  
+  <script src="./vue.global.js"></script>
+  <script>
+    const { createApp } = Vue;
+  
+    const app = createApp({
+      data(){
+        return {
+          msg: 'hello world',
+          isBeauty: false
+        }
+      },
+      methods: {
+        msg2() {
+          return 'hello vue3'
+        }
+      },
+    })
+
+    app.mount("#app")
+  </script>
+</body>
+</html>

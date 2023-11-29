@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <button @click="changeMsg">
+      点击改变
+    </button>
+    {{ msg}}
+  </div>
+  <script src="./vue.global.js"></script>
+  <script>
+    // Vue  application   b/s  c/s
+    const { createApp } = Vue;
+    // 创建应用实例 传入 配置对象 config
+    const app = createApp({
+      // data存储 实例的 数据  mvvm中的m   数据是直接挂载到 实例上
+      data(){
+        return {
+          msg: 'hello world'
+        }
+      },
+      // 实例的一个方法 会在 实例初始化完成后 自动触发
+      mounted(){
+        console.log(this, 'aaa');
+      },
+      // 存储实例方法  方法也是 直接挂载到 实例对象上
+      methods: {
+        changeMsg(){
+            this.msg = '值改变了';
+        }
+      }
+    })
+    // 应用实例 挂载（渲染）到 视图 #app上 #app元素内部受了 app控制
+    app.mount("#app")
+
+
+
+    
+  </script>
+</body>
+</html>

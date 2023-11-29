@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  
+  </head>
+  <body>
+    <div id="app">
+        <!-- 输入框直接 v-model绑定 字符串数据即可 -->
+      <input type="text" v-model.lazy="msg">
+
+      <hr>
+      <input type="text" v-model.trim="msg">
+      <hr>
+      <input type="text" v-model.number="msg">
+      <br>
+      {{msg}}
+     
+    </div>
+    <script src="./vue.global.js"></script>
+    <script>
+  
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+             msg: '初始值',
+            
+          };
+        }
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

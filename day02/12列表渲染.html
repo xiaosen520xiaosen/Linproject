@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 
+        基础循环，声明循环值的变量   
+        注意：循环时声明的变量 作用域 只能在 v-for指令 绑定元素的内部使用
+       -->
+      <ul>
+        <li v-for="item in arr">{{item}}</li>
+      </ul>
+      <!-- 
+        循环时 声明下标变量
+       -->
+      <ul>
+        <li v-for="(item, index) in arr">{{item}} --> {{index}}</li>
+      </ul>
+
+      <!-- 循环对象 -->
+      <ul>
+        <li v-for="(value, key, index) in json">
+          {{value}} --> {{key}} -->{{index}}
+        </li>
+      </ul>
+    </div>
+    <script src="./vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+            arr: ["秃驴", "二师兄", "白龙马", "猴子", "河妖"],
+            json: {
+              name: "小明",
+              age: 18,
+              gender: "男",
+            },
+          };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

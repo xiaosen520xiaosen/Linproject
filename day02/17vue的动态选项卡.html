@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      button.active {
+        background-color: rgb(186, 226, 174);
+      }
+      .content {
+        width: 200px;
+        height: 200px;
+        border: 1px solid #333;
+        line-height: 200px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <button
+        v-for="(title, index) in tab.title"
+        :key="index"
+        @click="switchTab(index)"
+        :class="{active: activeIndex === index}"
+      >
+        {{title}}
+      </button>
+
+      <div
+        v-for="(content, index) in tab.content"
+        class="content"
+        v-show="activeIndex === index"
+      >
+        {{content}}
+      </div>
+    </div>
+    <script src="./vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+            tab: {
+              title: ["标题1", "标题2", "标题3", "标题4"],
+              content: ["内容1", "内容2", "内容3", "内容4"],
+            },
+            activeIndex: 0
+          };
+        },
+        methods: {
+          switchTab(index) {
+            this.activeIndex = index;
+          },
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .todo-container {
+        max-width: 600px;
+        border: 1px solid #666;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 50px auto;
+      }
+      .todo-header {
+        height: 46px;
+        margin-bottom: 30px;
+        padding: 0 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .todo-input {
+        flex: 1;
+        height: 40px;
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+      .add-btn {
+        width: 100px;
+        height: 40px;
+        background-color: skyblue;
+        color: #fff;
+      }
+      .todo-item {
+        background-color: #f1f1f1;
+        height: 50px;
+        line-height: 50px;
+        font-size: 12px;
+        color: #333;
+        margin-top: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .todo-item.done{
+        background-color: #d3baba;
+      }
+      .todo-item.undone{
+        background-color: #c81e1e;
+      }
+      .todo-item.nodata {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div class="todo-container">
+        <div class="todo-header">
+          <input type="text" class="todo-input" v-model.trim="inputTxt" />
+          <button class="add-btn" @click="addTodo">新增</button>
+        </div>
+
+        <div class="todo-list">
+          <div v-if="todos.length === 0" class="todo-item nodata">
+            暂无待办事项
+          </div>
+          <div :class="['todo-item', {done: todo.done, undone: !todo.done}]" v-for="(todo, index) in todos">
+            <span> {{todo.content}} ----> {{index}}</span>
+            <div class="actions">
+              <input type="checkbox" v-model="todo.done">
+              <button class="del-btn" @click="delTodo(index)">删除</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+            inputTxt: "",
+            // 待办事项列表
+            todos: [
+              {
+                content: "待办事项1",
+                done: false,
+              },
+              {
+                content: "待办事项2",
+                done: true,
+              },
+            ],
+          };
+        },
+        methods: {
+          // 新增代办事项
+          addTodo() {
+            if (this.inputTxt === "") {
+              return false;
+            }
+            this.todos.push({
+              content: this.inputTxt,
+              done: false,
+            });
+            this.inputTxt = "";
+          },
+          // 删除待办事项
+          delTodo(index) {
+            if (confirm("您确认删除吗?")) {
+              this.todos.splice(index, 1);
+            }
+          },
+        },
+        mounted(){
+          console.log(this);
+        }
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

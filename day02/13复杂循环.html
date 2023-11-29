@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div v-for="(floor, i) in floors">
+        <h5>楼层标题: {{floor.name}}</h5>
+        <ul>
+          <li v-for="(item, index) in floor.items">
+            <h5>商品名:第{{i+1}}楼的 第 {{index+1}}个商品 {{item.name}}</h5>
+            <p>商品价格:{{item.price}}</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <script src="./vue.global.js"></script>
+    <script>
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+            floors: [
+              {
+                id: 1,
+                name: "一楼",
+                items: [
+                  {
+                    name: "商品",
+                    price: 10,
+                  },
+                  {
+                    name: "商品",
+                    price: 20,
+                  },
+                  {
+                    name: "商品",
+                    price: 30,
+                  },
+                ],
+              },
+              {
+                id: 2,
+                name: "二楼",
+                items: [
+                  {
+                    name: "商品",
+                    price: 10,
+                  },
+                  {
+                    name: "商品",
+                    price: 20,
+                  },
+                  {
+                    name: "商品",
+                    price: 30,
+                  },
+                ],
+              },
+              {
+                id: 3,
+                name: "三楼",
+                items: [
+                  {
+                    name: "商品",
+                    price: 10,
+                  },
+                  {
+                    name: "商品",
+                    price: 20,
+                  },
+                  {
+                    name: "商品",
+                    price: 30,
+                  },
+                ],
+              },
+            ],
+          };
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

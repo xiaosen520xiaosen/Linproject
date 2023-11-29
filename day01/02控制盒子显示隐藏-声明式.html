@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 200px;
+        height: 200px;
+        background-color: #c45959;
+        margin: 30px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <button class="btn" @click="toggleBox">{{show?"点击隐藏":'点击显示'}}</button>
+      <div class="box" v-show="show"></div>
+    </div>
+    <script src="./vue.global.js"></script>
+    <script>
+  
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+            show: true,
+          };
+        },
+        methods: {
+          toggleBox(){
+            this.show =!this.show;
+          }
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>

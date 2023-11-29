@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    /*
+    // vue 数据劫持 使用 Object.defineProperty 这是 es5 api （支持 IE9及以上）
+    // Object.defineProperty
+    var data = {
+      a: 10,
+      b: 20
+    }
+    var a = 100;
+    Object.defineProperty(data, 'a', {
+      // getter 取值劫持 （劫持所有取值的操作）
+      get(){
+        console.log('getter触发');
+        return a
+      },
+      // setter 赋值劫持 劫持 所有这个属性赋值的操作
+      set(val){
+        console.log('setter触发', val);
+        a = val;
+      }
+    })
+    console.log(data.a);
+    data.a = 500;
+    console.log(data.a);
+    */
+    /*
+    // vue3 数据劫持使用 es6 Proxy 
+    var data = {
+      a: 10,
+      b: 20
+    }
+    // 代理data 返回代理对象
+    const proxyData = new Proxy(data, {
+      // 每一次访问 属性名
+      get(target, key){
+        console.log('getter触发');
+        return target[key]
+      },
+      set(target,key,val){
+        console.log('setter触发');
+        target[key] = val;
+      }
+    })
+    console.log(proxyData.a);
+    proxyData.a = 500;
+    console.log(proxyData.a);
+    */
+  </script>
+</body>
+</html>

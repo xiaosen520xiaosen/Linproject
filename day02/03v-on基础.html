@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  
+  </head>
+  <body>
+    <div id="app">
+       
+      <button @click="handleClick">按钮</button>
+      {{msg}}
+      <hr>
+
+      <button @click="handleClick2('这是我传入的值')">按钮2</button>
+      {{msg2}}
+    </div>
+    <script src="./vue.global.js"></script>
+    <script>
+      
+      const { createApp } = Vue;
+      const app = createApp({
+        data() {
+          return {
+             msg: "aaaa",
+             msg2: 'bbbb'
+            
+          };
+        },
+        methods: {
+          handleClick(e){
+           this.msg = '值改变了';
+          //  console.log(e);
+          },
+          handleClick2(msg2){
+            this.msg2 = msg2;
+          }
+        }
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
